@@ -69,7 +69,14 @@
 | 网络配置    | 交换机 | vsw-********   | 交换机实例ID                                 |
 
 ### 验证结果
-1. 您已打开OEMCloud云安全产品分销平台的大门 🥳 先通过手机号获取“OEMCloud云巢”登录信息， “OEMCloud云台”登录信息在“OEMCloud云巢”内创建。
+1. 您已打开OEMCloud云安全产品分销平台的大门 🥳 
+   1. 首先登录“OEMCloud云巢”：
+      1. 初始登录账号：admin，密码：OEMCloud2023；
+      2. 进入后通过手机号进行账号授权；
+      3. 左侧菜单-客户管理，创建客户（客户的公司名称）；
+      4. 左侧菜单-账号管理-客户用户管理，创建客户用户（获取登录云台的账号与密码）。
+   2. 通过在“OEMCloud云巢”内创建的用户信息登录“OEMCloud云台”
+
 
    <img src="img_6.png" width="800" height="600" align="lift"/>
    <img src="img_8.png" width="800" height="600" align="lift"/>
