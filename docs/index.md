@@ -72,9 +72,12 @@
 1. 您已打开OEMCloud云安全产品分销平台的大门 🥳 先通过手机号获取“OEMCloud云巢”登录信息， “OEMCloud云台”登录信息在“OEMCloud云巢”内创建。
 
    <img src="img_6.png" width="800" height="600" align="lift"/>
+   <img src="img_8.png" width="800" height="600" align="lift"/>
+   <img src="img_10.png" width="400" height="800" align="lift"/><img src="img_9.png" width="400" height="800" align="lift"/>
    <img src="img_7.png" width="800" height="600" align="lift"/>
+
 
 注意： 通过阿里云市场进入的试用部署，产品可以免费试用，但是云资源费用需要正常支付，到期后可以正常续费，数据不会丢失。
 ## 联系我们
 
-如果您在安装或使用过程中，遇到任何问题，请发送邮件至 👉 suppot@shuyuninfo.com或商品详情页联系钉钉👉 【曙云全能小助手】 ，我们的工程师会及时解决您的问题。
+如果您在安装或使用过程中，遇到任何问题，请发送邮件至 👉 support@shuyuninfo.com或商品详情页联系钉钉👉 【曙云全能小助手】 ，我们的工程师会及时解决您的问题。
