@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>OEMCloud云安全产品分销平台部署 - Aliyun 计算巢 x OEMCloud</title>
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="search/main.js"></script>
+  
+
+  
+
+  <script src="js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#oemcloud">OEMCloud云安全产品分销平台部署</a></li>
+              
+                  <li><a href="#_1">概述</a></li>
+                  
+              
+                  <li><a href="#_2">计费说明</a></li>
+                  
+              
+                  <li><a href="#_3">部署架构</a></li>
+                  
+              
+                  <li><a href="#ram">RAM账号所需权限</a></li>
+                  
+              
+                  <li><a href="#_4">部署流程</a></li>
+                  
+                      <li class="li-h3"><a href="#_5">部署步骤</a></li>
+                  
+                      <li class="li-h3"><a href="#_6">部署参数说明</a></li>
+                  
+                      <li class="li-h3"><a href="#_7">验证结果</a></li>
+                  
+              
+                  <li><a href="#_8">联系我们</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="oemcloud">OEMCloud云安全产品分销平台部署</h1>
+<blockquote>
+<p><strong>免责声明：</strong>本服务由第三方提供，我们尽力确保其安全性、准确性和可靠性，但无法保证其完全免于故障、中断、错误或攻击。因此，本公司在此声明：对于本服务的内容、准确性、完整性、可靠性、适用性以及及时性不作任何陈述、保证或承诺，不对您使用本服务所产生的任何直接或间接的损失或损害承担任何责任；对于因您使用本服务而产生的任何损失、损害，包括但不限于直接损失、间接损失、利润损失、商誉损失、数据损失或其他经济损失，不承担任何责任，即使本公司事先已被告知可能存在此类损失或损害的可能性；我们保留不时修改本声明的权利，因此请您在使用本服务前定期检查本声明。如果您对本声明或本服务存在任何问题或疑问，请联系我们。</p>
+</blockquote>
+<h2 id="_1">概述</h2>
+<p><code>感谢您选择OEMCloud云安全产品分销平台！本文档将向您介绍如何快速部署该平台。OEMCloud云安全产品分销平台是一款基于云计算的安全产品分销平台，提供了云安全产品的管理、监控、告警等功能，为企业客户提供全面的安全保障。同时您可以通过该平台对进行客户管理、云账号管理、安全产品实例管理。平台仅需2c/8G服务器即可轻松运行，且平台界面简单，易于操作。通过部署该平台，您可以轻松地向您的客户提供云安全产品与服务。</code></p>
+<h2 id="_2">计费说明</h2>
+<p><code>OEMCloud云安全产品分销平台费用：正式版本为10,000元/年；试用版本0元/15天。ECS实例、网络流量等费用均为标准费用。</code></p>
+<h2 id="_3">部署架构</h2>
+<p><code>OEMCloud云安全产品分销平台单机部署架构</code></p>
+<h2 id="ram">RAM账号所需权限</h2>
+<p>服务需要对ECS、VPC等资源进行访问和创建操作，若您使用RAM用户创建服务实例，需要在创建服务实例前，对使用的RAM用户的账号添加相应资源的权限。添加RAM权限的详细操作，请参见<a href="https://help.aliyun.com/document_detail/121945.html">为RAM用户授权</a>。所需权限如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>权限策略名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunECSFullAccess</td>
+<td>管理云服务器服务（ECS）的权限</td>
+</tr>
+<tr>
+<td>AliyunVPCFullAccess</td>
+<td>管理专有网络（VPC）的权限</td>
+</tr>
+<tr>
+<td>AliyunROSFullAccess</td>
+<td>管理资源编排服务（ROS）的权限</td>
+</tr>
+<tr>
+<td>AliyunComputeNestUserFullAccess</td>
+<td>管理计算巢服务（ComputeNest）的用户侧权限</td>
+</tr>
+<tr>
+<td>AliyunCloudMonitorFullAccess</td>
+<td>管理云监控（CloudMonitor）的权限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">部署流程</h2>
+<h3 id="_5">部署步骤</h3>
+<ol>
+<li>
+<p>在<a href="https://market.aliyun.com/products/57004003/cmgj00062523.html?spm=5176.730005.result.12.38253524PmOkRo&amp;innerSource=search_OEM#sku=yuncode5652300001">产品页面</a>选择您想要购买的版本</p>
+<p><img src="img.png" width="800" height="800" align="lift"/></p>
+</li>
+<li>
+<p>点击【立即购买】后，创建服务实例</p>
+<p><img src="img_1.png" width="1000" height="1000" align="lift"/></p>
+</li>
+<li>
+<p>确认服务信息与订单信息，点击确认购买并支付</p>
+<p><img src="img_2.png" width="800" height="600" align="lift"/></p>
+</li>
+<li>
+<p>支付完成后，即可在云市场已购买服务中看到我们，等待状态由开通中转为已开通，选择立即进入计算巢部署</p>
+<p><img src="img_3.png" width="800" height="300" align="lift"/></p>
+</li>
+<li>
+<p>等待部署状态显示为已部署</p>
+<p><img src="img_4.png" width="800" height="600" align="lift"/></p>
+</li>
+<li>
+<p>点击ConsoleWeb，即可跳转至产品页面</p>
+<p><img src="img_5.png" width="800" height="600" align="lift"/></p>
+</li>
+</ol>
+<h3 id="_6">部署参数说明</h3>
+<table>
+<thead>
+<tr>
+<th>参数组</th>
+<th>参数项</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务实例名称</td>
+<td></td>
+<td>oemcloud-mp1x</td>
+<td>实例的名称</td>
+</tr>
+<tr>
+<td>地域</td>
+<td></td>
+<td>华东1（杭州）</td>
+<td>选中服务实例的地域，建议就近选中，以获取更好的网络延时。</td>
+</tr>
+<tr>
+<td>可用区配置</td>
+<td>部署区域</td>
+<td>可用区I</td>
+<td>地域下的不同可用区域</td>
+</tr>
+<tr>
+<td>付费类型配置</td>
+<td>付费类型</td>
+<td>按量付费 或 包年包月</td>
+<td></td>
+</tr>
+<tr>
+<td>ECS实例配置</td>
+<td>实例类型</td>
+<td>ecs.gn6i-c4g1.xlarge</td>
+<td>实例规格，可以根据实际需求选择</td>
+</tr>
+<tr>
+<td>ECS实例配置</td>
+<td>实例密码</td>
+<td><strong><em>*</em></strong>*</td>
+<td>设置实例密码。长度8~30个字符，必须包含三项（大写字母、小写字母、数字、()`~!@#$%^&amp;*-+={}[]:;'&lt;&gt;,.?/ 中的特殊符号）</td>
+</tr>
+<tr>
+<td>网络配置</td>
+<td>专有网络VPC</td>
+<td>vpc-<strong>*</strong>*</td>
+<td>VPC实例ID</td>
+</tr>
+<tr>
+<td>网络配置</td>
+<td>交换机</td>
+<td>vsw-<strong><em>*</em></strong>*</td>
+<td>交换机实例ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">验证结果</h3>
+<p>您已打开OEMCloud云安全产品分销平台的大门 🥳</p>
+<ol>
+<li>
+<p>首先登录“OEMCloud云巢”：</p>
+<ol>
+<li>
+<p>初始登录账号：admin，密码：OEMCloud2023；</p>
+</li>
+<li>
+<p>进入后通过手机号进行账号授权；</p>
+</li>
+<li>
+<p>左侧菜单-客户管理，创建客户（客户的公司名称）；</p>
+</li>
+<li>
+<p>左侧菜单-账号管理-客户用户管理，创建客户用户（获取登录云台的账号与密码）。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>通过在“OEMCloud云巢”内创建的用户信息登录“OEMCloud云台”</p>
+</li>
+</ol>
+<p><img src="img_6.png" width="800" height="600" align="lift"/>
+   <img src="img_8.png" width="800" height="600" align="lift"/>
+   <img src="img_10.png" width="400" height="800" align="lift"/><img src="img_9.png" width="400" height="800" align="lift"/>
+   <img src="img_7.png" width="800" height="600" align="lift"/></p>
+<p>注意： 通过阿里云市场进入的试用部署，产品可以免费试用，但是云资源费用需要正常支付，到期后可以正常续费，数据不会丢失。</p>
+<h2 id="_8">联系我们</h2>
+<p>如果您在安装或使用过程中，遇到任何问题，请发送邮件至 👉 support@shuyuninfo.com或商品详情页联系钉钉👉 【曙云全能小助手】 ，我们的工程师会及时解决您的问题。</p>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.5.3
+  Docs Build Date UTC : 2023-11-09 11:52:16.575389+00:00
+  -->
+</body>
+</html>
